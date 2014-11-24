@@ -7,9 +7,11 @@ bool hasLeftChild(int index, int arraySize);
 
 bool hasRightChild(int index, int arraySize);
 
-void heapifyUp(int array[], int highestIndex);
+bool hasParent(int index);
 
-void heapifyDown(/* in progress */);
+void heapifyUp(int array[], int arraySize);
+
+void heapifyDown(int array[], int arraySize);
 
 int leftChildIndex(int index);
 

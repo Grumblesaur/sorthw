@@ -1,7 +1,7 @@
 #ifndef ALGORITHM_H
 #define ALGORITHM_H
 
-void bucketSort(int array[], int arraySize);
+void bucketSort(int array[], int arraySize, int numBuckets);
 
 void bubbleSort(int array[], int arraySize);
 

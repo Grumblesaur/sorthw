@@ -3,9 +3,27 @@
 
 using namespace std;
 
-void bucketSort(int array[], int arraySize){
-
-	//finish this code
+void bucketSort(int array[], int arraySize, int numBuckets){
+	int buckets[numBuckets];
+	
+	for (int i = 0; i < numBuckets; i++){
+		buckets[i] = 0;
+	}
+	
+	for (int j = 0; j < arraySize; j++){
+		buckets[array[j]]++;
+	}
+	
+	int n = 0;
+	int m = 0;
+	while (n < numBuckets && m < arraySize){
+		for (int k = buckets[n]; k > 0; k--){
+			array[m++] = n;
+		}
+		n++;
+	}	
+	
+	
 	return;
 
 }
@@ -23,8 +41,11 @@ void bubbleSort(int array[], int arraySize){
 }
 
 void heapSort(int array[], int arraySize){
-
-	//finish this code
+	for (int i = 0; i < arraySize; i++){
+		heapifyDown(array, i);		
+	}
+	heapifyUp(array, arraySize);
+	
 	return;
 }
 

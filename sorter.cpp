@@ -21,9 +21,20 @@ int main(int argc, char *argv[]){
 	//cout << "Converted to string object: \"" << algorithmName << "\"" << endl;
 	
 	//throw exception if there's no size given to create the array
-	if (argc != 3){
-		cout << "Improper number of arguments!" << endl;
+	if (argc < 3){
+		cout << "Insufficient arguments!" << endl;
 		throw argcException;
+	} else if (argc > 3){
+		cout << "NOTE: Additional arguments beyond array size will be ignored!" << endl;
+		cout << "Press 'enter' to continue." << endl;
+		cin.get();
+	}
+	
+	if ((algorithmName != "bubble") && (algorithmName != "bucket") 
+		                        && (algorithmName != "heap")){
+		cout << sortAlgorithmException << endl;
+		throw sortAlgorithmException;
+
 	}
 	
 	//convert c-string to int for arraySize
@@ -55,9 +66,6 @@ int main(int argc, char *argv[]){
 		bubbleSort(array, arraySize);
 	} else if (algorithmName == "heap"){
 		heapSort(array, arraySize);
-	} else {
-		cout << sortAlgorithmException << endl;
-		throw sortAlgorithmException;
 	}
 
 	verify(array, arraySize);

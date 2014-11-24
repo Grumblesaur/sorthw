@@ -15,6 +15,7 @@ void bubbleSort(int array[], int arraySize){
 	for (int i = 0; i < arraySize - 1; i++){
 		for (int j = 0; j < arraySize - i - 1; j++){
 			if (array[j] > array[j + 1]){
+				//cout << "Swapping " << i << "," << j << endl;
 				swap(array[j], array[j + 1]);
 			}
 		}

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
+#include <string>
 #include <ctime>
 #include "helper.h"
 #include "algorithm.h"
@@ -8,32 +10,34 @@ using namespace std;
 
 int main(int argc, char *argv[]){
 	
-	string arraySizeException = "Invalid array size! \n";
-	string sortAlgorithmException = "Invalid algorithm! \n";
+	string arraySizeException = "Invalid array size!";
+	string sortAlgorithmException = "Invalid algorithm!";
+	string argcException = "Invalid number of arguments!";
+
+	//cout << "Name of algorithm passed is: \"" << argv[1] << "\"" << endl;
+	
+	string algorithmName(argv[1]);
+
+	//cout << "Converted to string object: \"" << algorithmName << "\"" << endl;
 	
 	//throw exception if there's no size given to create the array
-	if (argv[2] == ""){
-		throw arraySizeException;
-	}
-
-	//throw exception if array size is 0
-	if (argv[2] == "0"){
-		throw arraySizeException;
+	if (argc != 3){
+		cout << "Improper number of arguments!" << endl;
+		throw argcException;
 	}
 	
-	//throw exception if array size is passed as negative
-	if (argv[2][0] == '-'){
-		throw arraySizeException;
-	}
-	
-	//throw exception if incorrect algorithm argument is given
-	if (argv[1] != "bucket" || "bubble" || "heap"){
-		throw sortAlgorithmException;
-	}
-
 	//convert c-string to int for arraySize
 	int arraySize = atoi(argv[2]);
 
+	if (arraySize == 0){
+		cout << "Cannot create a zero-element array!" << endl;
+		throw arraySizeException;
+	} else if (arraySize < 0){
+		cout << "Cannot create an negatively-sized array!" << endl;
+		throw arraySizeException;
+	}
+	
+	
 	//instantiate an array of that size
 	int array[arraySize];
 	
@@ -45,12 +49,15 @@ int main(int argc, char *argv[]){
 		array[i] = rand() % 1000000;
 	}
 
-	if (argv[1] == "bucket"){
+	if (algorithmName == "bucket"){
 		bucketSort(array, arraySize);
-	} else if (argv[1] == "bubble"){
+	} else if (algorithmName == "bubble"){
 		bubbleSort(array, arraySize);
-	} else if (argv[1] == "heap"){
+	} else if (algorithmName == "heap"){
 		heapSort(array, arraySize);
+	} else {
+		cout << sortAlgorithmException << endl;
+		throw sortAlgorithmException;
 	}
 
 	verify(array, arraySize);

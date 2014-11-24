@@ -3,11 +3,11 @@
 
 void swap (int & x, int & y);
 
-bool hasLeftChild(int array[], int index, int arraySize);
+bool hasLeftChild(int index, int arraySize);
 
-bool hasRightChild(int array[], int index, int arraySize);
+bool hasRightChild(int index, int arraySize);
 
-void heapifyUp(/* in progress */);
+void heapifyUp(int array[], int highestIndex);
 
 void heapifyDown(/* in progress */);
 

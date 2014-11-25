@@ -23,7 +23,6 @@ void bucketSort(int array[], int arraySize, int numBuckets){
 		n++;
 	}	
 	
-	
 	return;
 
 }
@@ -41,11 +40,21 @@ void bubbleSort(int array[], int arraySize){
 }
 
 void heapSort(int array[], int arraySize){
-	for (int i = 0; i < arraySize; i++){
-		heapifyDown(array, i);		
-	}
-	heapifyUp(array, arraySize);
 	
+	for (int i = 0; i < arraySize; i++){
+		heapifyDown(array, i, arraySize);		
+	}
+	cout << "Created heap" << endl;	
+	
+	int j = arraySize - 1;
+	while (j >= 0){
+		swap(array[j], array[0]);
+		heapifyUp(array, j - 1);
+		j--;
+	}
+	cout << "Sorted array" << endl;
+	
+		
 	return;
 }
 

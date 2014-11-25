@@ -11,7 +11,7 @@ bool hasParent(int index);
 
 void heapifyUp(int array[], int arraySize);
 
-void heapifyDown(int array[], int arraySize);
+void heapifyDown(int array[], int index, int arraySize);
 
 int leftChildIndex(int index);
 

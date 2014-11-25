@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 void swap(int & x, int & y){
 
 	int temp;
@@ -49,50 +53,54 @@ bool hasParent(int index){
 	return true;
 }
 
-void heapifyUp(int array[], int arraySize){
-		
-	int index = arraySize - 1;
+void heapifyUp(int array[], int arraySize){	
+	int index = arraySize;
+
+	//if this is the root of the heap, return
 	if (!hasParent(index)){
 		return;
 	}
-	
-	while (array[index] > array[parentIndex(index)]){
-		swap(array[index], array[parentIndex(index)]);
-		index = parentIndex(index);
+	//otherwise,
+	int n = 0; //lg(1000000) is roughly equal to 20; 1000000 is the highest input needed
+		   //for this assignment. This is a hacky way to get the loop to halt
+		   //will look for a less BS solution to this later
+	while (hasParent(index) && n < 20){
+		//if the current element is greater than its parent
+		if (array[index] > array[parentIndex(index)]){
+			//swap the elements
+			swap(array[index], array[parentIndex(index)]);
+			//prepare to continue heapification from next element up
+			index = parentIndex(index);
+		}
+		n++;
 	}
 
 }
-void heapifyDown(int array[], int arraySize){
-		
-	int index = 0;
+void heapifyDown(int array[], int index, int arraySize){
 	int swapIndex;
-	bool unheapified = true;
-	
-	//if the heap property isn't fulfilled
-	while (unheapified){
-		//if there's a left child	
+
+	while (index < arraySize){
+		swapIndex = -1;
 		if (hasLeftChild(index, arraySize)){
-			//and it's greater than its parent
-			if (array[index] < array[hasLeftChild(index, arraySize)]){
-				//prepare to swap them
+			if (array[leftChildIndex(index)] > array[index]){
 				swapIndex = leftChildIndex(index);
+				cout << "Prepared to swap left child and parent" << endl;
 			}
-			//but if there's a right child
-			if (hasRightChild(index, arraySize)){
-				//and it's greater than the left child
-				if (array[rightChildIndex(index)] > array[leftChildIndex(index)]){
-					//prepare to swap to it instead
-					swapIndex = rightChildIndex(index);
-				}
+		}
+		if (hasRightChild(index, arraySize)){
+			if (array[rightChildIndex(index)] > array[leftChildIndex(index)]){
+				swapIndex = rightChildIndex(index);
+				cout << "Prepared to swap right child and parent" << endl;
 			}
-		//swap
-		swap(array[index], array[swapIndex]);
-		//set up to do next swap down if necessary
-		index = swapIndex;
-		
-		} else {
-			//the heap property is fulfilled and the loop will terminate
-			unheapified = false;
+		}
+		if (swapIndex != -1){
+			swap(array[index], array[swapIndex]);
+			index = swapIndex;
+			cout << "Swapped child, moved to new position" << endl;
+		}
+		if (swapIndex == -1){
+			index++;
+			cout << "Nothing swapped, trying next index" << endl;
 		}
 	}
 }

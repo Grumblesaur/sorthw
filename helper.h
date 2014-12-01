@@ -9,9 +9,9 @@ bool hasRightChild(int index, int arraySize);
 
 bool hasParent(int index);
 
-void heapifyUp(int array[], int arraySize);
+void heapifyUp(int array[], int index);
 
-void heapifyDown(int array[], int index, int arraySize);
+void heapifyDown(int array[], int arraySize);
 
 int leftChildIndex(int index);
 

@@ -42,24 +42,26 @@ void bubbleSort(int array[], int arraySize){
 void heapSort(int array[], int arraySize){
 	
 	for (int i = 0; i < arraySize; i++){
-		heapifyDown(array, i, arraySize);		
+		heapifyUp(array, i);		
 	}
 	cout << "Created heap" << endl;	
 	
 	int j = arraySize - 1;
 	while (j >= 0){
-		swap(array[j], array[0]);
-		heapifyUp(array, j - 1);
+		cout << array[0] << endl;
+		swap(array[0], array[j]);
 		j--;
+		heapifyDown(array, j);	
 	}
 	cout << "Sorted array" << endl;
-	
-		
+			
 	return;
 }
 
 void verify(int array[], int arraySize){
-
+	
+	for (int k = 0; k < arraySize - 1; k++){ cout << array[k] << endl; }
+	
 	for (int i = 0; i < arraySize - 1; i++){
 		if(array[i] > array[i + 1]){
 			cout << "The array was NOT sorted!" << endl;

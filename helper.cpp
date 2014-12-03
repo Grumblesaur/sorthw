@@ -23,7 +23,7 @@ int rightChildIndex(int index){
 
 int parentIndex(int index){
 
-        return ((index - 1) / 2);
+return ((index - 1) / 2);
 
 }
 
@@ -70,38 +70,37 @@ void heapifyUp(int array[], int index){
 			//prepare to continue heapification from next element up
 			index = parentIndex(index);
 		}
-		else if (array[index] <= array[parentIndex(index)]){
+		else if (array[index] == array[parentIndex(index)]){
+			return;
+		}
+		else if (array[index] < array[parentIndex(index)]){
 			return;
 		}
 		else if (index == 0){
 			return;
 		}	
 	}
-
 }
-void heapifyDown(int array[], int arraySize){
-	int swapIndex = -2; //arbitrary starting value for while loop
-	int index = 0;
+
+void heapifyDown(int array[], int start, int end){
+	int root = start;
 	
-	while (swapIndex != -1){
-		swapIndex = -1;
-		if (hasLeftChild(index, arraySize)){
-			if (array[leftChildIndex(index)] > array[index]){
-				swapIndex = leftChildIndex(index);
-				//cout << "Prepared to swap left child and parent" << endl;
-			}
+	while(hasLeftChild(root, end + 1)){
+		int swapv = root;
+		int child = leftChildIndex(swapv);
+		if (array[swapv] < array[child]){
+			swapv = leftChildIndex(swapv);
 		}
-		//
-		if (hasRightChild(index, arraySize)){
-			if (array[rightChildIndex(index)] > array[leftChildIndex(index)]){
-				swapIndex = rightChildIndex(index);
-				//cout << "Prepared to swap right child and parent" << endl;
-			}
+		if (child + 1 <= end && array[swapv] < array[child + 1]){
+			swapv = child + 1;
 		}
-		if (swapIndex != -1){
-			swap(array[index], array[swapIndex]);
-			index = swapIndex;
-			//cout << "Swapped child, moved to new position" << endl;
+		if (swapv == root){
+			return;
+		}
+		else {
+			swap(array[root], array[swapv]);
+			root = swapv;
 		}
 	}
+	return;
 }

@@ -7,6 +7,6 @@ void bubbleSort(int array[], int arraySize);
 
 void heapSort(int array[], int arraySize);
 
-void verify(int array[], int arraySize);
+bool verify(int array[], int arraySize);
 
 #endif

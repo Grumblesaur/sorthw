@@ -1,5 +1,6 @@
 sorter: main.o algorithm.o helper.o
 	g++ main.o helper.o algorithm.o -o sorter
+
 helper.o: helper.cpp helper.h
 	g++ -c helper.cpp
 

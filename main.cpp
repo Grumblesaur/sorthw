@@ -64,6 +64,7 @@ int main(int argc, char *argv[]){
 	
 	//seed RNG
 	srand(time(0));
+	//srand(99991);
 	
 	//fill array with integers in 0-999999 range
 	for (int i = 0; i < arraySize; i++){
@@ -77,8 +78,11 @@ int main(int argc, char *argv[]){
 	} else if (algorithmName == "heap"){
 		heapSort(array, arraySize);
 	}
-
-	verify(array, arraySize);
-
+	
+	if (verify(array, arraySize)){
+		cout << "Yea." << endl;
+	} else {
+		cout << "Nay." << endl;
+	}
 	return 0;
 }

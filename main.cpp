@@ -24,9 +24,7 @@ int main(int argc, char *argv[]){
 		cout << argcException << endl;
 		exit(1);
 	} else if (argc > 3){
-		cout << "NOTE: Arguments beyond array size will be ignored!" << endl;
-		cout << "Press 'enter' to continue." << endl;
-		cin.get();
+		cout << argcException << endl;
 	}
 	
 	string algorithmName(argv[1]);
@@ -52,19 +50,11 @@ int main(int argc, char *argv[]){
 		exit(3);
 	}
 	
-	
-	/*
-
-		all inputs are hereforth safe to use
-
-	*/
-	
-	//instantiate an array of that size
+	//instantiate array with safe array size
 	int array[arraySize];
 	
 	//seed RNG
 	srand(time(0));
-	//srand(99991);
 	
 	//fill array with integers in 0-999999 range
 	for (int i = 0; i < arraySize; i++){

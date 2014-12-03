@@ -59,9 +59,6 @@ void heapifyUp(int array[], int index){
 	if (!hasParent(index)){
 		return;
 	}
-	
-	//cout << "The value has a parent." << endl;
-		
 	while (hasParent(index)){
 		//if the current element is greater than its parent
 		if (array[index] > array[parentIndex(index)]){

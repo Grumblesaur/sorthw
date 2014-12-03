@@ -56,10 +56,8 @@ void heapSort(int array[], int arraySize){
 bool verify(int array[], int arraySize){
 	for (int i = 0; i < arraySize - 1; i++){
 		if(array[i] > array[i + 1]){
-			cout << "The array was NOT sorted!" << endl;
 			return false;
 		}
 	}
-	cout << "The array was sorted!" << endl;
 	return true;
 }

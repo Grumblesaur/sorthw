@@ -1,0 +1,53 @@
+James Murphy
+
+Sorter program raw data
+Metric is user time*.
+
+Heap Sort
+
+10 		.010s
+50 		.010s
+100 		.010s
+500 		.010s
+1000 	.010s
+5000 	.020s
+10000 	.020s
+50000 	.050s
+100000 	.080s
+500000 	.410s
+1000000 	.810s
+
+---------------
+
+Bucket Sort
+
+10 		.010s
+50 		.040s
+100 		.030s
+500 		.030s
+1000 	.020s
+5000 	.020s
+10000 	.030s
+50000 	.020s
+100000 	.030s
+500000 	.060s
+1000000 	.090s
+
+---------------
+
+Bubble Sort
+10 		.010s
+50 		.010s
+100 		.010s
+500 		.010s
+1000 	.030s
+5000 	.190s
+10000 	.710s
+50000 	17.560s
+100000 	70.180s
+500000 	1759.460s
+1000000 	7046.680s
+
+* Million integer bubble sort gave a small user time
+  value due to use of nohup and & in command line.
+  First value (real time?) was used instead.

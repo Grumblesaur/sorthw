@@ -16,12 +16,14 @@ void bucketSort(int array[], int arraySize, int numBuckets){
 	
 	//for each int in the array
 	for (int j = 0; j < arraySize; j++){
-		//increment the bucket that holds the value found at index j of the array
+		//increment the bucket that holds the value
+		//found at index j of the array
 		//e.g. if array[j] is 47, then buckets[47] is increased by one
 		buckets[array[j]]++;
 	}
 	
-	//create loop variables to avoid stepping outside the bounds of buckets[] and array[]
+	//create loop variables to avoid stepping outside
+	//the bounds of buckets[] and array[]
 	int n = 0;
 	int m = 0;
 	while (n < numBuckets && m < arraySize){
@@ -37,7 +39,6 @@ void bucketSort(int array[], int arraySize, int numBuckets){
 }
 
 void bubbleSort(int array[], int arraySize){
-
 	for (int i = 0; i < arraySize - 1; i++){
 		for (int j = 0; j < arraySize - i - 1; j++){
 			if (array[j] > array[j + 1]){
@@ -45,10 +46,10 @@ void bubbleSort(int array[], int arraySize){
 			}
 		}
 	}
+	return;
 }
 
 void heapSort(int array[], int arraySize){
-	
 	//create heap	
 	for (int i = 0; i < arraySize; i++){
 		heapifyUp(array, i);		
@@ -58,9 +59,8 @@ void heapSort(int array[], int arraySize){
 	while (end > 0){
 		swap(array[end], array[0]);
 		end--;
-		heapifyDown(array, 0, end);
+		heapifyDown(array, end);
 	}	
-			
 	return;
 }
 
